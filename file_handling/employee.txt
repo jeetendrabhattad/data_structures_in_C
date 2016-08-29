@@ -1,0 +1,5 @@
+jeetendra 28 50
+satish 25 70
+nazif 21 100
+yasir 20 200
+azim 21 400

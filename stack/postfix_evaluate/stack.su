@@ -1,0 +1,6 @@
+stack.c:6:7:InitStack	32	static
+stack.c:18:6:DeInitStack	32	static
+stack.c:26:7:Push	8	static
+stack.c:36:5:Pop	24	static
+stack.c:47:5:IsFull	8	static
+stack.c:54:5:IsEmpty	8	static
