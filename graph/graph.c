@@ -84,22 +84,45 @@ void DFS(int **graph, int noOfVertices)
     Push(&st, startingVertex-1);
     printf("\nVertex visited: %d", startingVertex);
 
+    int vertex = startingVertex - 1;
+    int i = 0;
     while(!IsEmpty(&st))
     {
-        int vertex = Pop(&st);
-        for(int i = 0 ; i < noOfVertices ; i++)
+        while(i < noOfVertices)
         {
             if(graph[vertex][i] && visited[i] == 0)
             {
                 visited[i] = 1;
                 Push(&st, i);
                 printf("\nVertex visited: %d", i+1);        
-                break;
+                vertex = i;
+                i = 0;
+                continue;
             }
+            i++;
+        }
+        Pop(&st);
+        if(!IsEmpty(&st))
+        {
+            vertex = Pop(&st);
+            i = 0;
         }
     }
     free(visited);
     DeInitStack(&st);
+}
+
+void RecDFS(int **graph, int *visited, int start_vertex, int noOfVertices)
+{
+    visited[start_vertex] = 1;
+    printf("\nVertex Visited: %d", start_vertex);
+    for(int i = 0 ; i < noOfVertices ; i++)
+    {
+        if(graph[start_vertex][i] && visited[i] == 0)
+        {
+            RecDFS(graph, visited, i, noOfVertices);
+        }
+    }
 }
 
 void SimulateGraph()
@@ -126,15 +149,21 @@ void SimulateGraph()
         }
 
     // calculate in-degree of all vertices
-    InDegree(graph, noOfVertices);
+    //InDegree(graph, noOfVertices);
     // calculate out-degree of all vertices
-    OutDegree(graph, noOfVertices);
+    //OutDegree(graph, noOfVertices);
     // BFS
-    BFS(graph, noOfVertices);
+    //BFS(graph, noOfVertices);
     // DFS
     DFS(graph, noOfVertices);
+    /*
+    int *visited = calloc(noOfVertices, sizeof(int));
+    printf("Recursive DFS....\n");
+    RecDFS(graph, visited, 0, noOfVertices);
     for(i = 0 ; i < noOfVertices ; i++)
         free(graph[i]);
+    free(visited);
+    */
     free(graph);
 }
 

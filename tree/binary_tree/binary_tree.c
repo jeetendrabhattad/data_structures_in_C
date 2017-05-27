@@ -6,6 +6,24 @@
 
 static QUEUE_T queue={NULL, NULL};
 
+int CountLeafNodes(TREENODE_T *root)
+{
+    if(root==NULL)
+        return 0;
+    if(root->left == NULL && root->right == NULL)
+        return 1;
+    return CountLeafNodes(root->left)+CountLeafNodes(root->right);
+}
+
+int CountNonLeafNodes(TREENODE_T *root)
+{
+    if(root==NULL)
+        return 0;
+    if(root->left == NULL && root->right == NULL)
+        return 0;
+    return 1+CountNonLeafNodes(root->left)+CountNonLeafNodes(root->right);
+}
+
 TREENODE_T* Create(int noOfNodes){
 	TREENODE_T *root = NULL;
 	for( int i = 0 ; i < noOfNodes ; i++ )
@@ -20,7 +38,10 @@ TREENODE_T* Create(int noOfNodes){
 
 static TREENODE_T* GetParentNode(TREENODE_T *root){
 	if(root->left == NULL || root->right == NULL)
+	{
+        FreeAll(&queue);
 		return root;
+    }
 #ifdef DEBUG
 	printf("left:-%x", root->left);
 	printf("right:-%x", root->right);
@@ -62,7 +83,6 @@ TREENODE_T* Insert(TREENODE_T *root, int data){
 				printf("You have done some logical mistake\n");
 		}
 	}
-	FreeAll(&queue);
 	return root;
 }
 

@@ -15,6 +15,8 @@ void InOrder(TREENODE_T*);
 void PostOrder(TREENODE_T*);
 _Bool IsBST(TREENODE_T *root);
 void FreeAllTreeNodes(TREENODE_T *root);
+int CountLeafNodes(TREENODE_T *root);
+int CountNonLeafNodes(TREENODE_T *root);
 // write to program to count leaf nodes
 // write to program to count non-leaf nodes
 // write to program to count parents having 2 children

@@ -150,6 +150,16 @@ TREENODE_T* lowestCommonAncestor(TREENODE_T* root, int value1, int value2)
     return NULL;
 }
 
+_Bool CompareTrees(TREENODE_T *root1, TREENODE_T *root2)
+{
+    if(root1 == NULL && root2 == NULL)
+        return true;
+    if(root1->data == root2->data)
+    {
+        return CompareTrees(root1->left, root2->left) && CompareTrees(root1->right, root2->right);
+    }
+    return false;
+}
 _Bool IsSubTree(TREENODE_T *main_tree, TREENODE_T *sub_tree, _Bool compare)
 {
     if(NULL == sub_tree && NULL == main_tree)

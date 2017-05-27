@@ -15,8 +15,11 @@ void SimulateBinaryTree()
 	printf("\nIn-Order Traversal:-\n");
 	InOrder(root);
 	printf("\nChecking if Binary Tree is BST as well :) %s\n", IsBST(root) ? "YES":"NO");
+	
+    printf("\nLeafNodes %d\n", CountLeafNodes(root));
+    printf("\nNonLeafNodes %d\n", CountNonLeafNodes(root));
 
-	printf("\nThanks for using Binary Tree Demo, such codes are exceptional and one should do it on his own :) !!!\n");
+	//printf("\nThanks for using Binary Tree Demo, such codes are exceptional and one should do it on his own :) !!!\n");
 
 	FreeAllTreeNodes(root);
 }

@@ -21,10 +21,8 @@ int Pop(STACK_T **stack){
 	{
 		int data = (*stack)->data;
 		STACK_T *del = *stack;
-		if(NULL != (*stack)->next)
-			*stack = (*stack)->next;
-		else
-			*stack = NULL;
+		*stack = (*stack)->next;
+        del->next = NULL;
 		free(del);
 		return data;
 	}
@@ -34,8 +32,11 @@ int Pop(STACK_T **stack){
 }
 
 int Peep(STACK_T *stack){
-	assert(stack != NULL);
-	return stack->data;
+    if(!IsEmpty(stack))
+    {
+    	return stack->data;
+    }
+    return -1;
 }
 
 _Bool IsEmpty(STACK_T *stack){

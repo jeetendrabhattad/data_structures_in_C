@@ -56,7 +56,7 @@ struct Student* InsertStudent(struct Student *insertHead, int RollNo, int Positi
 	else
 	{
 		struct Student* traverse;
-		for(traverse = insertHead; travers->next && Position - 2 ; traverse=traverse->next, --Position )
+		for(traverse = insertHead; traverse->next && Position - 2 ; traverse=traverse->next, --Position )
             ;
         if(Position - 2 == 0)
         {
