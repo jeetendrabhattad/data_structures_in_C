@@ -49,7 +49,11 @@ void SimulateBinarySearchTree()
     TREENODE_T *test = GetUnBalancedRoot(root);
     if(test)
         printf("data of unbalanced node is %d\n", test->data);
-	printf("\nThanks for using Binary Search Tree Demo, such codes are simple and one must be able do it on his own :) !!!\n");
+
+    printf("\nLeaf Nodes:-%d", countLeafNodes(root));
+	printf("\nNon Leaf Nodes:-%d", countNonLeafNodes(root));
+
+    printf("\nThanks for using Binary Search Tree Demo, such codes are simple and one must be able do it on his own :) !!!\n");
 	FreeAllTreeNodes(root);
 	//FreeAllTreeNodes(new_root);
 }

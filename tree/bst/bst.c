@@ -253,3 +253,35 @@ TREENODE_T* GetUnBalancedRoot(TREENODE_T *root)
     }
     return NULL;
 }
+
+
+int countLeafNodes(TREENODE_T * root)
+{
+    if(root == NULL)
+        return 0;
+    if(root->left == NULL && root->right == NULL)
+    {
+        return 1;
+    }
+    return countLeafNodes(root->left)+countLeafNodes(root->right);
+}
+int countNonLeafNodes(TREENODE_T * root)
+{
+    if(root == NULL)
+        return 0;
+    if(root->left == NULL && root->right == NULL)
+    {
+        return 0;
+    }
+    if(root->left == NULL)
+    {
+        return 1 + countNonLeafNodes(root->right);
+    }
+    if(root->right == NULL)
+    {
+        return 1 + countNonLeafNodes(root->left);
+    }
+    return 1+countNonLeafNodes(root->left)+countNonLeafNodes(root->right);
+}
+
+
